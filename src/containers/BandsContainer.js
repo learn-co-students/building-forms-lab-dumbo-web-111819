@@ -1,13 +1,24 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 
 class BandsContainer extends Component {
+
+  renderBands = () => {
+    return this.props.bands.map(band => <li>{band.name}</li>)
+  }
+
   render() {
+    // console.log(this.props)
     return(
       <div>
-        BandsContainer
+        <ul>
+          {this.renderBands()}
+        </ul>
       </div>
     )
   }
 }
-
-export default BandsContainer
+const mapStateToProps = state => {
+  return state
+}
+export default connect(mapStateToProps)(BandsContainer)
